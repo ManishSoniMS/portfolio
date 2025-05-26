@@ -1,80 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import '../../../gen/assets.gen.dart';
 import '../../core/constants/app_constraints.dart';
 import '../../core/utils/extensions/on_build_context.dart';
+import '../../routing/app_routes.dart';
+import 'header_button.dart';
+import 'svg_icon_button.dart';
 
-class PortfolioHeader extends StatelessWidget {
-  const PortfolioHeader({super.key});
-
+class PortfolioHeader extends StatelessWidget implements PreferredSizeWidget {
+  const PortfolioHeader({super.key, this.currentIndex = 0});
+  final int currentIndex;
   @override
   Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        bool isMobile = constraints.maxWidth < AppConstraints.minDesktopWidth;
+        return AppBar(
+          centerTitle: false,
+          surfaceTintColor: context.colors.surface,
+          automaticallyImplyLeading: false,
+          leading: SizedBox(),
+          leadingWidth: AppConstraints.contentPadding(constraints.maxWidth),
+          title: _title(context),
+          actions: [
+            if (isMobile)
+              SvgIconButton(onTap: () {}, icon: Assets.icons.drawer)
+            else ...[
+              HeaderButton(
+                onTap: () => context.go(AppRoutes.home),
+                text: "home",
+                isSelected: currentIndex == 0,
+              ),
+              HeaderButton(
+                onTap: () => context.go(AppRoutes.work),
+                text: "works",
+                isSelected: currentIndex == 1,
+              ),
+              HeaderButton(
+                onTap: () => context.go(AppRoutes.aboutMe),
+                text: "about-me",
+                isSelected: currentIndex == 2,
+              ),
+              HeaderButton(
+                onTap: () => context.go(AppRoutes.contact),
+                text: "contacts",
+                isSelected: currentIndex == 3,
+              ),
+            ],
+            Gap(AppConstraints.contentPadding(constraints.maxWidth)),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _title(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        SvgPicture.asset(Assets.images.logo, height: 16, width: 16),
+        SvgPicture.asset(Assets.icons.logo, height: 16, width: 16),
         Gap(AppConstraints.small),
         Text("Manish", style: context.textTheme.bodyLarge),
-        Spacer(),
-        HeaderButton(onTap: () {}, text: "home", isSelected: true),
-        HeaderButton(onTap: () {}, text: "works", isSelected: false),
-        HeaderButton(onTap: () {}, text: "about-me", isSelected: false),
-        HeaderButton(onTap: () {}, text: "contacts", isSelected: false),
       ],
     );
   }
-}
-
-class HeaderButton extends StatelessWidget {
-  const HeaderButton({
-    super.key,
-    this.onTap,
-    this.icon = "#",
-    required this.text,
-    this.isSelected = true,
-    this.textStyle,
-    this.hasDivider = false,
-  });
-
-  final VoidCallback? onTap;
-  final String icon;
-  final String text;
-  final bool isSelected;
-  final TextStyle? textStyle;
-  final bool hasDivider;
 
   @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        TextButton(
-          onPressed: onTap,
-          child: RichText(
-            text: TextSpan(
-              text: icon,
-              style: (textStyle ?? context.textTheme.bodySmall)?.copyWith(
-                color: context.colors.primary,
-              ),
-              children: [
-                TextSpan(
-                  text: text,
-                  style: (textStyle ?? context.textTheme.bodySmall)?.copyWith(
-                    color:
-                        isSelected
-                            ? context.colors.onSurface
-                            : context.theme.disabledColor,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        if (hasDivider)
-          Expanded(child: Container(height: 1, color: context.colors.primary)),
-      ],
-    );
-  }
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }

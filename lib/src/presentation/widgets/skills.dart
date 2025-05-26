@@ -6,8 +6,9 @@ import '../../../gen/assets.gen.dart';
 import '../../core/constants/app_constraints.dart';
 import '../../core/utils/extensions/on_build_context.dart';
 import '../../core/utils/functions/list_to_string.dart';
+import '../../domain/entities/skill_entity.dart';
 import 'decoration_rectangle.dart';
-import 'portfolio_header.dart';
+import 'header_button.dart';
 import 'tile_divider.dart';
 
 class Skills extends StatelessWidget {
@@ -15,92 +16,161 @@ class Skills extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: Column(
-            children: [
-              HeaderButton(
-                text: "Skills",
-                textStyle: context.textTheme.headlineMedium,
-                hasDivider: true,
-              ),
-              SkillsGraphic(),
-            ],
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        bool isLargeMobile =
+            constraints.maxWidth <= AppConstraints.maxMobileWidth;
+
+        double tileWidth = getTileWidth(constraints.maxWidth);
+
+        return Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppConstraints.contentPadding(constraints.maxWidth),
           ),
-        ),
-        Gap(AppConstraints.extraLarge),
-        Padding(
-          padding: EdgeInsets.only(top: AppConstraints.extraLarge * 2),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              SkillBox(
-                title: "Language & Framework",
-                skills: ["Dart", "Flutter", "TypeScript"],
-              ),
-              Gap(AppConstraints.medium),
-              Column(
-                children: [
-                  SkillBox(
-                    title: "Architecture & Patterns",
-                    skills: [
-                      "Clean Architecture",
-                      "BLoC",
-                      "Cubit",
-                      "Provider",
-                      "MVVM",
-                      "Freezed",
-                    ],
-                  ),
-                  Gap(AppConstraints.medium),
-                  SkillBox(
-                    title: "Realtime & Networking",
-                    skills: [
-                      "Firebase Firestore",
-                      "Realtime Database",
-                      "Streams",
-                      "REST APIs",
-                      "WebSockets",
-                    ],
-                  ),
-                ],
-              ),
-              Gap(AppConstraints.medium),
-              Column(
-                children: [
-                  SkillBox(
-                    title: "Database & Backend",
-                    skills: [
-                      "Firebase",
-                      "Supabase",
-                      "SQLite",
-                      "Firebase Cloud Functions",
-                    ],
-                  ),
-                  Gap(AppConstraints.medium),
-                  SkillBox(
-                    title: "Testing",
-                    skills: [
-                      "Unit Tests",
-                      "Widget Tests",
-                      "Integration Tests",
-                      "BLoC Tests",
-                    ],
-                  ),
-                  Gap(AppConstraints.medium),
-                  SkillBox(
-                    title: "Tools & DevOps",
-                    skills: ["Git", "GitHub", "GitLab", "Bitrise (CI/CD)"],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
+          child: isLargeMobile
+              ? Column(
+                  children: [
+                    HeaderButton(
+                      text: "Skills",
+                      textStyle: context.textTheme.headlineMedium,
+                      hasDivider: true,
+                    ),
+                    Gap(AppConstraints.extraLarge),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            SkillBox(
+                              title: skills[0].title,
+                              skills: skills[0].skills,
+                              width: tileWidth,
+                            ),
+                            Gap(AppConstraints.medium),
+                            SkillBox(
+                              title: skills[2].title,
+                              skills: skills[2].skills,
+                              width: tileWidth,
+                            ),
+                            Gap(AppConstraints.medium),
+                            SkillBox(
+                              title: skills[4].title,
+                              skills: skills[4].skills,
+                              width: tileWidth,
+                            ),
+                          ],
+                        ),
+                        Gap(AppConstraints.medium),
+                        Column(
+                          children: [
+                            SkillBox(
+                              title: skills[1].title,
+                              skills: skills[1].skills,
+                              width: tileWidth,
+                            ),
+                            Gap(AppConstraints.medium),
+                            SkillBox(
+                              title: skills[3].title,
+                              skills: skills[3].skills,
+                              width: tileWidth,
+                            ),
+                            Gap(AppConstraints.medium),
+                            SkillBox(
+                              title: skills[5].title,
+                              skills: skills[5].skills,
+                              width: tileWidth,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          HeaderButton(
+                            text: "Skills",
+                            textStyle: context.textTheme.headlineMedium,
+                            hasDivider: true,
+                          ),
+                          SkillsGraphic(),
+                        ],
+                      ),
+                    ),
+                    Gap(AppConstraints.extraLarge),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: AppConstraints.extraLarge * 2,
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SkillBox(
+                            title: skills[0].title,
+                            skills: skills[0].skills,
+                            width: tileWidth,
+                          ),
+                          Gap(AppConstraints.medium),
+                          Column(
+                            children: [
+                              SkillBox(
+                                title: skills[1].title,
+                                skills: skills[1].skills,
+                                width: tileWidth,
+                              ),
+                              Gap(AppConstraints.medium),
+                              SkillBox(
+                                title: skills[2].title,
+                                skills: skills[2].skills,
+                                width: tileWidth,
+                              ),
+                            ],
+                          ),
+                          Gap(AppConstraints.medium),
+                          Column(
+                            children: [
+                              SkillBox(
+                                title: skills[3].title,
+                                skills: skills[3].skills,
+                                width: tileWidth,
+                              ),
+                              Gap(AppConstraints.medium),
+                              SkillBox(
+                                title: skills[4].title,
+                                skills: skills[4].skills,
+                                width: tileWidth,
+                              ),
+                              Gap(AppConstraints.medium),
+                              SkillBox(
+                                title: skills[5].title,
+                                skills: skills[5].skills,
+                                width: tileWidth,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+        );
+      },
     );
+  }
+
+  double getTileWidth(double size) {
+    if (size >= AppConstraints.maxDesktopWidth) {
+      return 200;
+    } else if (size >= AppConstraints.minDesktopWidth) {
+      return 140;
+    } else {
+      return 120;
+    }
   }
 }
 
@@ -114,19 +184,19 @@ class SkillsGraphic extends StatelessWidget {
         Positioned(
           top: 30,
           left: 0,
-          child: SvgPicture.asset(Assets.images.dots, height: 94, width: 94),
+          child: SvgPicture.asset(Assets.icons.dots, height: 94, width: 94),
         ),
         Positioned(
           bottom: 100,
           left: 100,
           right: 70,
-          child: SvgPicture.asset(Assets.images.dots, height: 94, width: 94),
+          child: SvgPicture.asset(Assets.icons.dots, height: 94, width: 94),
         ),
         Positioned(
           bottom: 0,
           left: 20,
           child: SvgPicture.asset(
-            Assets.images.logoOutline,
+            Assets.icons.logoOutline,
             height: 169,
             width: 169,
           ),
@@ -154,14 +224,21 @@ class SkillsGraphic extends StatelessWidget {
 }
 
 class SkillBox extends StatelessWidget {
-  const SkillBox({super.key, required this.title, required this.skills});
+  const SkillBox({
+    super.key,
+    required this.title,
+    required this.skills,
+    required this.width,
+  });
 
   final String title;
   final List<String> skills;
+  final double width;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 178,
+      width: width,
       decoration: BoxDecoration(
         border: Border.all(color: context.theme.disabledColor, width: 1),
       ),

@@ -3,6 +3,42 @@ import 'package:gap/gap.dart';
 
 import '../../core/constants/app_constraints.dart';
 import '../../core/utils/extensions/on_build_context.dart';
+import 'user_image.dart';
+
+class UserInfo extends StatelessWidget {
+  const UserInfo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        bool isMobile = constraints.maxWidth <= AppConstraints.minDesktopWidth;
+
+        return Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppConstraints.contentPadding(constraints.maxWidth),
+          ),
+          child: isMobile
+              ? Column(
+                  children: const [
+                    UserBasicInfo(),
+                    Gap(AppConstraints.large),
+                    UserImage(),
+                  ],
+                )
+              : Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Expanded(child: UserBasicInfo()),
+                    Gap(AppConstraints.large),
+                    UserImage(),
+                  ],
+                ),
+        );
+      },
+    );
+  }
+}
 
 class UserBasicInfo extends StatelessWidget {
   const UserBasicInfo({super.key});

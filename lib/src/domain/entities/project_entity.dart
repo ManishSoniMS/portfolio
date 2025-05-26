@@ -26,6 +26,7 @@ class ProjectEntity extends Equatable {
       appStoreLink: map['appStoreLink'],
     );
   }
+
   final String id;
   final String name;
   final String shortDescription;

@@ -7,10 +7,6 @@ class TileDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 1,
-      width: double.infinity,
-      color: context.theme.disabledColor,
-    );
+    return Divider(height: 1, color: context.theme.disabledColor);
   }
 }

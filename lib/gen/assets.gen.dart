@@ -22,6 +22,50 @@ class $AssetsFontsGen {
   List<String> get values => [firaCodeBold, firaCodeRegular];
 }
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/dots.svg
+  String get dots => 'assets/icons/dots.svg';
+
+  /// File path: assets/icons/double_quote.svg
+  String get doubleQuote => 'assets/icons/double_quote.svg';
+
+  /// File path: assets/icons/drawer.svg
+  String get drawer => 'assets/icons/drawer.svg';
+
+  /// File path: assets/icons/github.svg
+  String get github => 'assets/icons/github.svg';
+
+  /// File path: assets/icons/instagram.svg
+  String get instagram => 'assets/icons/instagram.svg';
+
+  /// File path: assets/icons/linkedin.svg
+  String get linkedin => 'assets/icons/linkedin.svg';
+
+  /// File path: assets/icons/logo.svg
+  String get logo => 'assets/icons/logo.svg';
+
+  /// File path: assets/icons/logo_outline.svg
+  String get logoOutline => 'assets/icons/logo_outline.svg';
+
+  /// File path: assets/icons/mail.svg
+  String get mail => 'assets/icons/mail.svg';
+
+  /// List of all assets
+  List<String> get values => [
+    dots,
+    doubleQuote,
+    drawer,
+    github,
+    instagram,
+    linkedin,
+    logo,
+    logoOutline,
+    mail,
+  ];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -29,36 +73,18 @@ class $AssetsImagesGen {
   AssetGenImage get aboutMe =>
       const AssetGenImage('assets/images/about_me.png');
 
-  /// File path: assets/images/dots.svg
-  String get dots => 'assets/images/dots.svg';
-
-  /// File path: assets/images/double_quote.svg
-  String get doubleQuote => 'assets/images/double_quote.svg';
-
-  /// File path: assets/images/logo.svg
-  String get logo => 'assets/images/logo.svg';
-
-  /// File path: assets/images/logo_outline.svg
-  String get logoOutline => 'assets/images/logo_outline.svg';
-
   /// File path: assets/images/user.png
   AssetGenImage get user => const AssetGenImage('assets/images/user.png');
 
   /// List of all assets
-  List<dynamic> get values => [
-    aboutMe,
-    dots,
-    doubleQuote,
-    logo,
-    logoOutline,
-    user,
-  ];
+  List<AssetGenImage> get values => [aboutMe, user];
 }
 
 class Assets {
   const Assets._();
 
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
