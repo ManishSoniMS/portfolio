@@ -5,7 +5,9 @@ import '../../core/utils/extensions/on_build_context.dart';
 import 'header_button.dart';
 
 class ProjectHeading extends StatelessWidget {
-  const ProjectHeading({super.key});
+  const ProjectHeading({super.key, required this.onTapViewAll});
+
+  final VoidCallback onTapViewAll;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class ProjectHeading extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: onTapViewAll,
                     child: Text("View all ~~>"),
                   ),
                 ),

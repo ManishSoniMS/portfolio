@@ -28,7 +28,7 @@ class _HeaderButtonState extends State<HeaderButton> {
   bool hasHover = false;
   @override
   Widget build(BuildContext context) {
-    final style = (widget.textStyle ?? context.textTheme.bodySmall);
+    final style = widget.textStyle ?? context.textTheme.bodySmall;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -40,6 +40,7 @@ class _HeaderButtonState extends State<HeaderButton> {
           },
           child: TextButton(
             onPressed: widget.onTap,
+
             child: RichText(
               text: TextSpan(
                 text: widget.icon,

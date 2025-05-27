@@ -19,7 +19,7 @@ class Skills extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         bool isLargeMobile =
-            constraints.maxWidth <= AppConstraints.maxMobileWidth;
+            constraints.maxWidth <= (AppConstraints.maxMobileWidth * 1.6);
 
         double tileWidth = getTileWidth(constraints.maxWidth);
 
@@ -98,7 +98,7 @@ class Skills extends StatelessWidget {
                             textStyle: context.textTheme.headlineMedium,
                             hasDivider: true,
                           ),
-                          SkillsGraphic(),
+                          if (!isLargeMobile) SkillsGraphic(),
                         ],
                       ),
                     ),
@@ -180,6 +180,7 @@ class SkillsGraphic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         Positioned(
           top: 30,

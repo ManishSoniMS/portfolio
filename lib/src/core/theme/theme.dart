@@ -77,9 +77,6 @@ class DefaultTheme {
     );
 
     ThemeData dark = FlexThemeData.dark(
-      // keyColors: const FlexKeyColors(),
-      // visualDensity: FlexColorScheme.comfortablePlatformDensity,
-      // useMaterial3: false,
       textTheme: textTheme.apply(
         bodyColor: PortfolioColors.dark.white,
         decorationColor: PortfolioColors.dark.white,
@@ -116,6 +113,7 @@ class DefaultTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: PortfolioColors.dark.white,
+          overlayColor: PortfolioColors.dark.scaffoldBackgroundColor,
           textStyle: GoogleFonts.firaCode(
             fontSize: 16,
             fontWeight: FontWeight.w500,

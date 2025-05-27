@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
 
 import '../../../gen/assets.gen.dart';
 import '../../core/constants/app_constraints.dart';
@@ -14,6 +13,7 @@ class ViewLessProjects extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         Positioned(
           top: 30,
@@ -49,42 +49,16 @@ class ViewLessProjects extends StatelessWidget {
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
 
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Wrap(
                 children: [
                   for (var i = 0; i < maxLength; i++) ...[
                     ProjectTile(projects[i], width: tileWidth),
-                    if ((i + 1) != maxLength) Gap(AppConstraints.medium),
+                    if ((i + 1) != maxLength)
+                      SizedBox(width: AppConstraints.medium),
                   ],
                 ],
               ),
             );
-
-            // return GridView.builder(
-            //   padding: EdgeInsets.symmetric(
-            //     horizontal: isLargeMobile ? AppConstraints.medium : 171,
-            //   ),
-            //   shrinkWrap: true,
-            //   itemCount:
-            //       projects.length > maxLength ? maxLength : projects.length,
-            //   physics: NeverScrollableScrollPhysics(),
-            //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //     childAspectRatio:
-            //         isSmallMobile
-            //             ? 0.25
-            //             : isMediumMobile
-            //             ? 0.34
-            //             : isLargeMobile
-            //             ? 0.4
-            //             : 0.6,
-            //     crossAxisCount: isLargeMobile ? 2 : 3,
-            //     crossAxisSpacing: AppConstraints.medium,
-            //   ),
-            //   itemBuilder: (context, index) {
-            //     return ProjectTile(projects[index]);
-            //   },
-            // );
           },
         ),
       ],

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -16,7 +18,8 @@ class ProjectTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: width),
+      margin: EdgeInsets.only(bottom: AppConstraints.medium),
+      constraints: BoxConstraints(maxWidth: max(width, 250)),
       decoration: BoxDecoration(
         border: Border.all(color: context.theme.disabledColor, width: 1),
       ),
