@@ -15,11 +15,26 @@ class $AssetsFontsGen {
   /// File path: assets/fonts/FiraCode-Bold.ttf
   String get firaCodeBold => 'assets/fonts/FiraCode-Bold.ttf';
 
+  /// File path: assets/fonts/FiraCode-Light.ttf
+  String get firaCodeLight => 'assets/fonts/FiraCode-Light.ttf';
+
+  /// File path: assets/fonts/FiraCode-Medium.ttf
+  String get firaCodeMedium => 'assets/fonts/FiraCode-Medium.ttf';
+
   /// File path: assets/fonts/FiraCode-Regular.ttf
   String get firaCodeRegular => 'assets/fonts/FiraCode-Regular.ttf';
 
+  /// File path: assets/fonts/FiraCode-SemiBold.ttf
+  String get firaCodeSemiBold => 'assets/fonts/FiraCode-SemiBold.ttf';
+
   /// List of all assets
-  List<String> get values => [firaCodeBold, firaCodeRegular];
+  List<String> get values => [
+    firaCodeBold,
+    firaCodeLight,
+    firaCodeMedium,
+    firaCodeRegular,
+    firaCodeSemiBold,
+  ];
 }
 
 class $AssetsIconsGen {
