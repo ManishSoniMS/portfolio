@@ -85,6 +85,7 @@ class PortfolioFooter extends StatelessWidget {
                 ],
               ),
             ),
+            Gap(53),
           ],
         );
       },
