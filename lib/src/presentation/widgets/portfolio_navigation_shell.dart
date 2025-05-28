@@ -20,7 +20,6 @@ class PortfolioNavigationShell extends StatelessWidget {
     return Scaffold(
       appBar: PortfolioHeader(currentIndex: navigationShell.currentIndex),
       body: navigationShell,
-
     );
   }
 }
