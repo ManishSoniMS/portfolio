@@ -5,7 +5,6 @@ import 'package:gap/gap.dart';
 import '../../../gen/assets.gen.dart';
 import '../../core/constants/app_constraints.dart';
 import '../../core/utils/extensions/on_build_context.dart';
-import '../widgets/about_me_image.dart';
 import '../widgets/decoration_rectangle.dart';
 import '../widgets/header_button.dart';
 import '../widgets/portfolio_footer.dart';
