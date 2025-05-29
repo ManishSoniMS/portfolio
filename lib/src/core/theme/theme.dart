@@ -90,6 +90,23 @@ class DefaultTheme {
       cupertinoOverrideTheme: const CupertinoThemeData(applyThemeToAll: true),
     );
 
+    final darkInputDecorationTheme = dark.inputDecorationTheme.copyWith(
+      filled: false,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.zero,
+        borderSide: BorderSide(width: 1, color: PortfolioColors.dark.grey),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.zero,
+        borderSide: BorderSide(width: 1, color: PortfolioColors.dark.white),
+      ),
+      labelStyle: GoogleFonts.firaCode(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: PortfolioColors.dark.grey,
+      ),
+    );
+
     _darkTheme = dark.copyWith(
       scaffoldBackgroundColor: PortfolioColors.dark.scaffoldBackgroundColor,
       disabledColor: PortfolioColors.dark.grey,
@@ -120,6 +137,7 @@ class DefaultTheme {
           ),
         ),
       ),
+      inputDecorationTheme: darkInputDecorationTheme,
     );
   }
 
