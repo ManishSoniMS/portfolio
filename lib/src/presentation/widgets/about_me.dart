@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../gen/assets.gen.dart';
 import '../../core/constants/app_constraints.dart';
 import '../../core/utils/extensions/on_build_context.dart';
+import '../../routing/app_routes.dart';
+import 'about_me_image.dart';
 import 'decoration_rectangle.dart';
 import 'header_button.dart';
 
@@ -44,16 +47,24 @@ class AboutMe extends StatelessWidget {
               ),
               child: isMobile
                   ? Column(
-                      children: const [
-                        AboutMeDescription(),
+                      children: [
+                        AboutMeDescription(
+                          showReadMoreButton: true,
+                          onReadMore: () => context.go(AppRoutes.aboutMe),
+                        ),
                         Gap(AppConstraints.extraLarge),
                         AboutMeImage(),
                       ],
                     )
                   : Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Expanded(child: AboutMeDescription()),
+                      children: [
+                        Expanded(
+                          child: AboutMeDescription(
+                            showReadMoreButton: true,
+                            onReadMore: () => context.go(AppRoutes.aboutMe),
+                          ),
+                        ),
                         Gap(AppConstraints.extraLarge),
                         AboutMeImage(),
                       ],
@@ -67,7 +78,17 @@ class AboutMe extends StatelessWidget {
 }
 
 class AboutMeDescription extends StatelessWidget {
-  const AboutMeDescription({super.key});
+  const AboutMeDescription({
+    super.key,
+    required this.showReadMoreButton,
+    this.onReadMore,
+  }) : assert(
+         !showReadMoreButton || onReadMore != null,
+         "If showReadMoreButton is true, please provide a VoidCallback for onReadMore.",
+       );
+
+  final bool showReadMoreButton;
+  final VoidCallback? onReadMore;
 
   @override
   Widget build(BuildContext context) {
@@ -94,45 +115,10 @@ class AboutMeDescription extends StatelessWidget {
             color: context.theme.disabledColor,
           ),
         ),
-        Gap(AppConstraints.large),
-        OutlinedButton(onPressed: () {}, child: Text("Read more ~>")),
-      ],
-    );
-  }
-}
-
-class AboutMeImage extends StatelessWidget {
-  const AboutMeImage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.asset(
-          Assets.images.aboutMe.path, // height: 507,
-          width: 339,
-        ),
-        Positioned(
-          top: 30,
-          left: 0,
-          child: SvgPicture.asset(Assets.icons.dots, height: 84, width: 84),
-        ),
-        Positioned(
-          top: 100,
-          bottom: 50,
-          right: 0,
-          child: SvgPicture.asset(Assets.icons.dots, height: 56, width: 104),
-        ),
-        Positioned(
-          bottom: -1,
-          left: 0,
-          right: 0,
-          child: Container(
-            width: 339,
-            height: 2,
-            color: context.colors.primary,
-          ),
-        ),
+        if (showReadMoreButton) ...[
+          Gap(AppConstraints.large),
+          OutlinedButton(onPressed: onReadMore, child: Text("Read more ~>")),
+        ],
       ],
     );
   }
