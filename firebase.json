@@ -9,5 +9,10 @@
     "frameworksBackend": {
       "region": "asia-east1"
     }
+  },
+  "firestore": {
+    "database": "(default)",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   }
 }
