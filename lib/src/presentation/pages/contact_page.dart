@@ -164,9 +164,11 @@ class _ContactMeFormState extends State<ContactMeForm> {
           Gap(AppConstraints.medium),
           TextFormField(decoration: InputDecoration(labelText: "Title")),
           Gap(AppConstraints.medium),
-          TextFormField(decoration: InputDecoration(labelText: "Message")),
+          TextFormField(
+            maxLines: 5,
+            decoration: InputDecoration(labelText: "Message"),
+          ),
           Gap(AppConstraints.medium),
-
           SizedBox(
             width: double.infinity,
             child: OutlinedButton(onPressed: () {}, child: Text("Send")),

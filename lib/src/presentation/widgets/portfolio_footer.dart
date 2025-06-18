@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../gen/assets.gen.dart';
 import '../../core/constants/app_constraints.dart';
 import '../../core/utils/extensions/on_build_context.dart';
 import 'svg_icon_button.dart';
 import 'tile_divider.dart';
+
+final String linkedin = "https://www.linkedin.com/in/ms110/";
+final String github = "https://github.com/ManishSoniMS";
+final String instagram = "https://www.instagram.com/manish.soni.art/";
+final String youtube = "https://www.youtube.com/@ManishSoni-Art";
 
 class PortfolioFooter extends StatelessWidget {
   const PortfolioFooter({super.key});
@@ -64,18 +70,23 @@ class PortfolioFooter extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             SvgIconButton(
-                              onTap: () {},
+                              onTap: () => _launchUrl(linkedin),
                               icon: Assets.icons.linkedin,
                             ),
                             Gap(AppConstraints.medium),
                             SvgIconButton(
-                              onTap: () {},
+                              onTap: () => _launchUrl(github),
                               icon: Assets.icons.github,
                             ),
                             Gap(AppConstraints.medium),
                             SvgIconButton(
-                              onTap: () {},
+                              onTap: () => _launchUrl(instagram),
                               icon: Assets.icons.instagram,
+                            ),
+                            Gap(AppConstraints.medium),
+                            SvgIconButton(
+                              onTap: () => _launchUrl(youtube),
+                              icon: Assets.icons.youtube,
                             ),
                           ],
                         ),
@@ -90,5 +101,11 @@ class PortfolioFooter extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+Future<void> _launchUrl(String uri) async {
+  if (!await launchUrl(Uri.parse(uri))) {
+    throw Exception('Could not launch $uri');
   }
 }

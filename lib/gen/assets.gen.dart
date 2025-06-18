@@ -67,6 +67,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/mail.svg
   String get mail => 'assets/icons/mail.svg';
 
+  /// File path: assets/icons/youtube.svg
+  String get youtube => 'assets/icons/youtube.svg';
+
   /// List of all assets
   List<String> get values => [
     dots,
@@ -78,6 +81,7 @@ class $AssetsIconsGen {
     logo,
     logoOutline,
     mail,
+    youtube,
   ];
 }
 

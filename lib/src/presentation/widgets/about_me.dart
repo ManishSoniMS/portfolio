@@ -84,7 +84,8 @@ class AboutMeDescription extends StatelessWidget {
     this.onReadMore,
   }) : assert(
          !showReadMoreButton || onReadMore != null,
-         "If showReadMoreButton is true, please provide a VoidCallback for onReadMore.",
+         "If showReadMoreButton is true, "
+         "please provide a VoidCallback for onReadMore.",
        );
 
   final bool showReadMoreButton;

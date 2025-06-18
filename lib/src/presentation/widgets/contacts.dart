@@ -9,6 +9,11 @@ import '../../core/utils/extensions/on_build_context.dart';
 import '../../routing/app_routes.dart';
 import 'header_button.dart';
 
+const String contactMeText =
+    "I’m interested in freelance opportunities. "
+    "However, if you have other request or question, "
+    "don’t hesitate to contact me.";
+
 class Contacts extends StatelessWidget {
   const Contacts({super.key});
 
@@ -55,9 +60,7 @@ class Contacts extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "I’m interested in freelance opportunities. "
-                              "However, if you have other request or question, "
-                              "don’t hesitate to contact me.",
+                              contactMeText,
                               style: context.textTheme.bodySmall?.copyWith(
                                 color: context.theme.disabledColor,
                               ),
@@ -86,9 +89,7 @@ class Contacts extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "I’m interested in freelance opportunities. "
-                                    "However, if you have other request or question, "
-                                    "don’t hesitate to contact me.",
+                                    contactMeText,
                                     style: context.textTheme.bodySmall
                                         ?.copyWith(
                                           color: context.theme.disabledColor,

@@ -10,6 +10,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Portfolio',
+      debugShowCheckedModeBanner: false,
       theme: DefaultTheme.instance.darkTheme,
       darkTheme: DefaultTheme.instance.darkTheme,
       routerConfig: RoutesManager.instance.router,

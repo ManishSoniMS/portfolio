@@ -12,15 +12,46 @@ import '../widgets/header_button.dart';
 import '../widgets/portfolio_footer.dart';
 import '../widgets/skills.dart';
 
-List facts = [
-  'I like winter more than summer',
-  'I often bike with my friends',
-  'I like pizza and pasta',
-  'I was in Egypt, Poland and Turkey',
-  'My favorite movie is The Green Mile',
-  'I am still in school',
-  'I don’t have any siblings',
-];
+List<String> get getFacts {
+  final startedDate = DateTime(2021, 7, 1);
+  final today = DateTime.now();
+
+  final experienceInMonth = today.difference(startedDate).inDays ~/ 30;
+
+  final experienceInYears = experienceInMonth / 12;
+
+  final experience = experienceInYears.toStringAsFixed(1);
+
+  List<String> facts = [
+    'Flutter dev with $experience+ years of hands-on experience.',
+    'I build fast, clean, cross-platform apps.',
+    'Love working with BLoC, Provider, and clean code.',
+    'Real-time updates? Firebase is my go-to.',
+    'Payments? Done it with Stripe and Razorpay.',
+    'CI/CD? Bitrise keeps my builds smooth.',
+    'I’m also an artist—portraits are my thing.',
+    'I run two art pages full of sketches and studies.',
+    'Art helps me slow down. Code keeps me sharp.',
+    'I create stuff that looks good and works better.',
+  ];
+
+  return facts;
+}
+
+const String aboutMeText =
+    "Hey! I’m Manish —\n\n"
+    "A passionate Flutter developer with 3.5+ years of experience "
+    "building high-performance, visually polished apps for "
+    "mobile and web. I specialize in turning complex ideas "
+    "into smooth, scalable solutions using Flutter, Firebase, "
+    "and REST APIs. From crafting pixel-perfect UIs to "
+    "automating workflows with CI/CD, I bring precision, "
+    "creativity, and a user-first mindset to every project.\n\n"
+    "When I’m not coding, I’m exploring the latest in the "
+    "Flutter ecosystem or geeking out over performance "
+    "optimization. \n\n"
+    "Tech is my craft, creativity is my fuel — and I "
+    "love building experiences that make both shine.";
 
 class AboutMePage extends StatelessWidget {
   const AboutMePage({super.key});
@@ -174,7 +205,7 @@ class AboutMePage extends StatelessWidget {
       return Wrap(
         alignment: WrapAlignment.start,
         children: [
-          for (var i = 0; i < facts.length; i++)
+          for (var i = 0; i < getFacts.length; i++)
             Container(
               margin: EdgeInsets.all(AppConstraints.small),
               padding: EdgeInsets.all(AppConstraints.small),
@@ -185,7 +216,7 @@ class AboutMePage extends StatelessWidget {
                 ),
               ),
               child: Text(
-                facts[i],
+                getFacts[i],
                 style: context.textTheme.bodySmall?.copyWith(
                   color: context.theme.disabledColor,
                 ),
@@ -201,7 +232,7 @@ class AboutMePage extends StatelessWidget {
           child: Wrap(
             alignment: WrapAlignment.start,
             children: [
-              for (var i = 0; i < facts.length; i++)
+              for (var i = 0; i < getFacts.length; i++)
                 Container(
                   margin: EdgeInsets.all(AppConstraints.small),
                   padding: EdgeInsets.all(AppConstraints.small),
@@ -212,7 +243,7 @@ class AboutMePage extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    facts[i],
+                    getFacts[i],
                     style: context.textTheme.bodySmall?.copyWith(
                       color: context.theme.disabledColor,
                     ),
@@ -280,20 +311,7 @@ class AboutMePage extends StatelessWidget {
         ? Column(
             children: [
               Text(
-                "Hey! I’m Manish —\n\n"
-                "A passionate Flutter developer with 3.5+ years of experience "
-                "building high-performance, visually polished apps for "
-                "mobile and web. I specialize in turning complex ideas "
-                "into smooth, scalable solutions using Flutter, Firebase, "
-                "and REST APIs. From crafting pixel-perfect UIs to "
-                "automating workflows with CI/CD, I bring precision, "
-                "creativity, and a user-first mindset to every project.\n\n"
-                "When I’m not coding, I’m exploring the latest in the "
-                "Flutter ecosystem or geeking out over performance "
-                "optimization. \n"
-                "Tech is my craft, creativity is my fuel — and I "
-                "love building experiences that make both shine.",
-
+                aboutMeText,
                 style: context.textTheme.bodySmall?.copyWith(
                   color: context.theme.disabledColor,
                 ),
@@ -307,19 +325,7 @@ class AboutMePage extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  "Hey! I’m Manish —\n\n"
-                  "A passionate Flutter developer with 3.5+ years of experience "
-                  "building high-performance, visually polished apps for "
-                  "mobile and web. I specialize in turning complex ideas "
-                  "into smooth, scalable solutions using Flutter, Firebase, "
-                  "and REST APIs. From crafting pixel-perfect UIs to "
-                  "automating workflows with CI/CD, I bring precision, "
-                  "creativity, and a user-first mindset to every project.\n\n"
-                  "When I’m not coding, I’m exploring the latest in the "
-                  "Flutter ecosystem or geeking out over performance "
-                  "optimization. \n\n"
-                  "Tech is my craft, creativity is my fuel — and I "
-                  "love building experiences that make both shine.",
+                  aboutMeText,
                   style: context.textTheme.bodySmall?.copyWith(
                     color: context.theme.disabledColor,
                   ),
