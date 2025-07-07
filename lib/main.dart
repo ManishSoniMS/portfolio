@@ -18,3 +18,6 @@ void main() {
 
 /// client id:
 /// 903487108269-fdkbpr6frqc3q7f54mna0s7gfggs1aar.apps.googleusercontent.com
+
+/// use it with flutter v3.32 and above
+/// --web-experimental-hot-reload

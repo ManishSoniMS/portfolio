@@ -14,7 +14,7 @@ class RoutesManager {
         GoRoute(
           path: '/',
           name: "Splash",
-          builder: (context, state) => SplashPage(),
+          builder: (context, state) => const SplashPage(),
         ),
         StatefulShellRoute.indexedStack(
           builder: (context, _, navigationShell) =>
@@ -25,7 +25,7 @@ class RoutesManager {
                 GoRoute(
                   path: '/home',
                   name: "Home",
-                  builder: (context, state) => HomePage(),
+                  builder: (context, state) => const HomePage(),
                 ),
               ],
             ),
@@ -34,7 +34,7 @@ class RoutesManager {
                 GoRoute(
                   path: '/work',
                   name: "Projects",
-                  builder: (context, state) => WorksPage(),
+                  builder: (context, state) => const WorksPage(),
                 ),
               ],
             ),
@@ -43,7 +43,7 @@ class RoutesManager {
                 GoRoute(
                   path: '/about-me',
                   name: "About me",
-                  builder: (context, state) => AboutMePage(),
+                  builder: (context, state) => const AboutMePage(),
                 ),
               ],
             ),
@@ -52,7 +52,7 @@ class RoutesManager {
                 GoRoute(
                   path: '/contact',
                   name: "Contact",
-                  builder: (context, state) => ContactsPage(),
+                  builder: (context, state) => const ContactsPage(),
                 ),
               ],
             ),

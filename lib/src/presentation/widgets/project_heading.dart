@@ -31,16 +31,50 @@ class ProjectHeading extends StatelessWidget {
                 flex: 1,
                 child: Align(
                   alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: onTapViewAll,
-                    child: Text("View all ~~>"),
-                  ),
+                  child: AnimatedTextButton(
+                      onTapViewAll: onTapViewAll, text: "View all ~~>"),
                 ),
               ),
             ],
           ),
         );
       },
+    );
+  }
+}
+
+class AnimatedTextButton extends StatefulWidget {
+  const AnimatedTextButton({
+    super.key,
+    required this.onTapViewAll,
+    required this.text,
+  });
+
+  final VoidCallback onTapViewAll;
+  final String text;
+
+  @override
+  State<AnimatedTextButton> createState() => _AnimatedTextButtonState();
+}
+
+class _AnimatedTextButtonState extends State<AnimatedTextButton> {
+  bool hasHover = false;
+  @override
+  Widget build(BuildContext context) {
+    return FocusableActionDetector(
+      onShowHoverHighlight: (hover) {
+        setState(() => hasHover = hover);
+      },
+      child: TextButton(
+        onPressed: widget.onTapViewAll,
+        child: Text(
+          widget.text,
+          style: TextStyle(
+            fontSize: hasHover ? 16 : null,
+            color: hasHover ? context.colors.primary : null,
+          ),
+        ),
+      ),
     );
   }
 }

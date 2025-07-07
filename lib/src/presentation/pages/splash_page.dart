@@ -13,7 +13,7 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    Future.delayed(Duration(milliseconds: 300)).then((_) {
+    Future.delayed(const Duration(milliseconds: 300)).then((_) {
       if (mounted) context.pushReplacement(AppRoutes.home);
     });
     super.initState();
@@ -21,7 +21,7 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(child: Center(child: CircularProgressIndicator())),
     );
   }

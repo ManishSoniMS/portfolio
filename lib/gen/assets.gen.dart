@@ -29,16 +29,22 @@ class $AssetsFontsGen {
 
   /// List of all assets
   List<String> get values => [
-    firaCodeBold,
-    firaCodeLight,
-    firaCodeMedium,
-    firaCodeRegular,
-    firaCodeSemiBold,
-  ];
+        firaCodeBold,
+        firaCodeLight,
+        firaCodeMedium,
+        firaCodeRegular,
+        firaCodeSemiBold,
+      ];
 }
 
 class $AssetsIconsGen {
   const $AssetsIconsGen();
+
+  /// File path: assets/icons/android.svg
+  String get android => 'assets/icons/android.svg';
+
+  /// File path: assets/icons/apple.svg
+  String get apple => 'assets/icons/apple.svg';
 
   /// File path: assets/icons/dots.svg
   String get dots => 'assets/icons/dots.svg';
@@ -72,17 +78,19 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<String> get values => [
-    dots,
-    doubleQuote,
-    drawer,
-    github,
-    instagram,
-    linkedin,
-    logo,
-    logoOutline,
-    mail,
-    youtube,
-  ];
+        android,
+        apple,
+        dots,
+        doubleQuote,
+        drawer,
+        github,
+        instagram,
+        linkedin,
+        logo,
+        logoOutline,
+        mail,
+        youtube,
+      ];
 }
 
 class $AssetsImagesGen {

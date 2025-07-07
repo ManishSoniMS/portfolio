@@ -30,7 +30,7 @@ class AboutMe extends StatelessWidget {
                 width: 104,
               ),
             ),
-            Positioned(
+            const Positioned(
               top: 0,
               bottom: 0,
               left: -(156 / 2),
@@ -52,8 +52,8 @@ class AboutMe extends StatelessWidget {
                           showReadMoreButton: true,
                           onReadMore: () => context.go(AppRoutes.aboutMe),
                         ),
-                        Gap(AppConstraints.extraLarge),
-                        AboutMeImage(),
+                        const Gap(AppConstraints.extraLarge),
+                        const AboutMeImage(),
                       ],
                     )
                   : Row(
@@ -65,8 +65,8 @@ class AboutMe extends StatelessWidget {
                             onReadMore: () => context.go(AppRoutes.aboutMe),
                           ),
                         ),
-                        Gap(AppConstraints.extraLarge),
-                        AboutMeImage(),
+                        const Gap(AppConstraints.extraLarge),
+                        const AboutMeImage(),
                       ],
                     ),
             ),
@@ -83,10 +83,10 @@ class AboutMeDescription extends StatelessWidget {
     required this.showReadMoreButton,
     this.onReadMore,
   }) : assert(
-         !showReadMoreButton || onReadMore != null,
-         "If showReadMoreButton is true, "
-         "please provide a VoidCallback for onReadMore.",
-       );
+          !showReadMoreButton || onReadMore != null,
+          "If showReadMoreButton is true, "
+          "please provide a VoidCallback for onReadMore.",
+        );
 
   final bool showReadMoreButton;
   final VoidCallback? onReadMore;
@@ -117,8 +117,9 @@ class AboutMeDescription extends StatelessWidget {
           ),
         ),
         if (showReadMoreButton) ...[
-          Gap(AppConstraints.large),
-          OutlinedButton(onPressed: onReadMore, child: Text("Read more ~>")),
+          const Gap(AppConstraints.large),
+          OutlinedButton(
+              onPressed: onReadMore, child: const Text("Read more ~>")),
         ],
       ],
     );
