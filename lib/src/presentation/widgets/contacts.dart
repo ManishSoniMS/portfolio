@@ -9,6 +9,10 @@ import '../../core/utils/extensions/on_build_context.dart';
 import '../../routing/app_routes.dart';
 import 'header_button.dart';
 
+const String contactMeText = "I’m interested in freelance opportunities. "
+    "However, if you have other request or question, "
+    "don’t hesitate to contact me.";
+
 class Contacts extends StatelessWidget {
   const Contacts({super.key});
 
@@ -38,7 +42,7 @@ class Contacts extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (isMobile) Gap(AppConstraints.extraLarge),
+                  if (isMobile) const Gap(AppConstraints.extraLarge),
                   ConstrainedBox(
                     constraints: BoxConstraints(
                       maxWidth: isMobile ? double.infinity : size.width * 0.3,
@@ -49,27 +53,24 @@ class Contacts extends StatelessWidget {
                       hasDivider: true,
                     ),
                   ),
-                  Gap(AppConstraints.extraLarge),
+                  const Gap(AppConstraints.extraLarge),
                   isMobile
                       ? Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "I’m interested in freelance opportunities. "
-                              "However, if you have other request or question, "
-                              "don’t hesitate to contact me.",
+                              contactMeText,
                               style: context.textTheme.bodySmall?.copyWith(
                                 color: context.theme.disabledColor,
                               ),
                             ),
-                            Gap(AppConstraints.extraLarge),
+                            const Gap(AppConstraints.extraLarge),
                             OutlinedButton(
                               onPressed: () => context.go(AppRoutes.contact),
-                              child: Text("Contact me ~>"),
+                              child: const Text("Contact me ~>"),
                             ),
-
-                            Gap(AppConstraints.extraLarge),
-                            Align(
+                            const Gap(AppConstraints.extraLarge),
+                            const Align(
                               alignment: Alignment.bottomRight,
                               child: MessageMeHere(),
                             ),
@@ -86,26 +87,24 @@ class Contacts extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "I’m interested in freelance opportunities. "
-                                    "However, if you have other request or question, "
-                                    "don’t hesitate to contact me.",
-                                    style: context.textTheme.bodySmall
-                                        ?.copyWith(
-                                          color: context.theme.disabledColor,
-                                        ),
+                                    contactMeText,
+                                    style:
+                                        context.textTheme.bodySmall?.copyWith(
+                                      color: context.theme.disabledColor,
+                                    ),
                                   ),
-                                  Gap(AppConstraints.extraLarge),
+                                  const Gap(AppConstraints.extraLarge),
                                   OutlinedButton(
                                     onPressed: () =>
                                         context.go(AppRoutes.contact),
-                                    child: Text("Contact me ~>"),
+                                    child: const Text("Contact me ~>"),
                                   ),
                                 ],
                               ),
                             ),
-                            Gap(AppConstraints.extraLarge),
-                            Spacer(),
-                            MessageMeHere(),
+                            const Gap(AppConstraints.extraLarge),
+                            const Spacer(),
+                            const MessageMeHere(),
                           ],
                         ),
                   Gap(isMobile ? AppConstraints.extraLarge : 106),
@@ -119,26 +118,41 @@ class Contacts extends StatelessWidget {
   }
 }
 
-class MessageMeHere extends StatelessWidget {
+class MessageMeHere extends StatefulWidget {
   const MessageMeHere({super.key});
 
   @override
+  State<MessageMeHere> createState() => _MessageMeHereState();
+}
+
+class _MessageMeHereState extends State<MessageMeHere> {
+  bool hasHover = false;
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(AppConstraints.medium),
-      decoration: BoxDecoration(
-        border: Border.all(color: context.theme.disabledColor, width: 1),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text("Message me here", style: context.textTheme.bodySmall),
-          Gap(AppConstraints.medium),
-          ContactInfo(
-            icon: Assets.icons.mail,
-            contactInfo: "imsonimanish@gmail.com",
-          ),
-        ],
+    return FocusableActionDetector(
+      onShowHoverHighlight: (hover) {
+        setState(() => hasHover = hover);
+      },
+      child: Container(
+        padding: const EdgeInsets.all(AppConstraints.medium),
+        decoration: BoxDecoration(
+          border: Border.all(
+              color: hasHover
+                  ? context.colors.primary
+                  : context.theme.disabledColor,
+              width: 1),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Message me here", style: context.textTheme.bodySmall),
+            const Gap(AppConstraints.medium),
+            ContactInfo(
+              icon: Assets.icons.mail,
+              contactInfo: "imsonimanish@gmail.com",
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -160,7 +174,7 @@ class ContactInfo extends StatelessWidget {
           height: AppConstraints.medium,
           width: AppConstraints.medium,
         ),
-        Gap(AppConstraints.small),
+        const Gap(AppConstraints.small),
         Text(
           contactInfo,
           style: context.textTheme.bodySmall?.copyWith(

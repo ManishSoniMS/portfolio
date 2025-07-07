@@ -40,7 +40,6 @@ class _HeaderButtonState extends State<HeaderButton> {
           },
           child: TextButton(
             onPressed: widget.onTap,
-
             child: RichText(
               text: TextSpan(
                 text: widget.icon,

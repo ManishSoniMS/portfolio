@@ -19,16 +19,16 @@ class UserInfo extends StatelessWidget {
             horizontal: AppConstraints.contentPadding(constraints.maxWidth),
           ),
           child: isMobile
-              ? Column(
-                  children: const [
+              ? const Column(
+                  children: [
                     UserBasicInfo(),
                     Gap(AppConstraints.large),
                     UserImage(),
                   ],
                 )
-              : Row(
+              : const Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: const [
+                  children: [
                     Expanded(child: UserBasicInfo()),
                     Gap(AppConstraints.large),
                     UserImage(),
@@ -62,7 +62,7 @@ class UserBasicInfo extends StatelessWidget {
             ],
           ),
         ),
-        Gap(AppConstraints.extraLarge),
+        const Gap(AppConstraints.extraLarge),
         Text(
           "I build high-performance Flutter apps with clean code, "
           "real-time data integration, "
@@ -71,8 +71,8 @@ class UserBasicInfo extends StatelessWidget {
             color: context.theme.disabledColor,
           ),
         ),
-        Gap(AppConstraints.large),
-        OutlinedButton(onPressed: () {}, child: Text("Contact me!!")),
+        const Gap(AppConstraints.large),
+        OutlinedButton(onPressed: () {}, child: const Text("Contact me!!")),
       ],
     );
   }

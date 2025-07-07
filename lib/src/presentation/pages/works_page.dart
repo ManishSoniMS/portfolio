@@ -37,7 +37,7 @@ class WorksPage extends StatelessWidget {
                         textStyle: context.textTheme.headlineMedium,
                         hasDivider: false,
                       ),
-                      Gap(AppConstraints.medium),
+                      const Gap(AppConstraints.medium),
                       Text(
                         "List of my projects",
                         style: context.textTheme.bodySmall,
@@ -47,7 +47,7 @@ class WorksPage extends StatelessWidget {
                 );
               },
             ),
-            Gap(AppConstraints.extraLarge * 2),
+            const Gap(AppConstraints.extraLarge * 2),
             Stack(
               clipBehavior: Clip.none,
               children: [
@@ -74,7 +74,7 @@ class WorksPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
+                const Positioned(
                   top: -50,
                   right: -155 / 2,
                   child: Center(
@@ -84,7 +84,7 @@ class WorksPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
+                const Positioned(
                   bottom: -50,
                   left: -10,
                   child: Center(
@@ -107,20 +107,19 @@ class WorksPage extends StatelessWidget {
 
                     final tileWidth =
                         ((constraints.maxWidth - (horizontalPadding * 2)) /
-                            maxLength) -
-                        AppConstraints.medium;
+                                maxLength) -
+                            AppConstraints.medium;
 
                     return Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: horizontalPadding,
                       ),
-
                       child: Wrap(
                         children: [
                           for (var i = 0; i < length; i++) ...[
                             ProjectTile(projects[i], width: tileWidth),
                             if ((i + 1) != length)
-                              SizedBox(width: AppConstraints.medium),
+                              const SizedBox(width: AppConstraints.medium),
                           ],
                         ],
                       ),
@@ -129,8 +128,8 @@ class WorksPage extends StatelessWidget {
                 ),
               ],
             ),
-            Gap(AppConstraints.extraLarge * 2),
-            PortfolioFooter(),
+            const Gap(AppConstraints.extraLarge * 2),
+            const PortfolioFooter(),
           ],
         ),
       ),

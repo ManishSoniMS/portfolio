@@ -40,29 +40,29 @@ class DefaultTheme {
       description: 'Midnight blue theme, custom definition of all colors',
       light: FlexSchemeColor(
         primary: PortfolioColors.dark.primary,
-        primaryContainer: Color(0xFF00325B),
-        primaryLightRef: Color(0xFF545A92),
-        secondary: Color(0xFFFFB59D),
-        secondaryContainer: Color(0xFF872100),
-        secondaryLightRef: Color(0xFFAC3306),
-        tertiary: Color(0xFF86D2E1),
-        tertiaryContainer: Color(0xFF004E59),
-        tertiaryLightRef: Color(0xFF006875),
-        error: Color(0xFFFFB4AB),
-        errorContainer: Color(0xFF93000A),
+        primaryContainer: const Color(0xFF00325B),
+        primaryLightRef: const Color(0xFF545A92),
+        secondary: const Color(0xFFFFB59D),
+        secondaryContainer: const Color(0xFF872100),
+        secondaryLightRef: const Color(0xFFAC3306),
+        tertiary: const Color(0xFF86D2E1),
+        tertiaryContainer: const Color(0xFF004E59),
+        tertiaryLightRef: const Color(0xFF006875),
+        error: const Color(0xFFFFB4AB),
+        errorContainer: const Color(0xFF93000A),
       ),
       dark: FlexSchemeColor(
         primary: PortfolioColors.dark.primary,
-        primaryContainer: Color(0xFF00325B),
-        primaryLightRef: Color(0xFF545A92),
-        secondary: Color(0xFFFFB59D),
-        secondaryContainer: Color(0xFF872100),
-        secondaryLightRef: Color(0xFFAC3306),
-        tertiary: Color(0xFF86D2E1),
-        tertiaryContainer: Color(0xFF004E59),
-        tertiaryLightRef: Color(0xFF006875),
-        error: Color(0xFFFFB4AB),
-        errorContainer: Color(0xFF93000A),
+        primaryContainer: const Color(0xFF00325B),
+        primaryLightRef: const Color(0xFF545A92),
+        secondary: const Color(0xFFFFB59D),
+        secondaryContainer: const Color(0xFF872100),
+        secondaryLightRef: const Color(0xFFAC3306),
+        tertiary: const Color(0xFF86D2E1),
+        tertiaryContainer: const Color(0xFF004E59),
+        tertiaryLightRef: const Color(0xFF006875),
+        error: const Color(0xFFFFB4AB),
+        errorContainer: const Color(0xFF93000A),
       ),
     );
 
@@ -107,17 +107,27 @@ class DefaultTheme {
       ),
     );
 
+    final darkListTileTheme = ListTileThemeData(
+      titleTextStyle: GoogleFonts.firaCode(
+          fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white),
+      subtitleTextStyle: GoogleFonts.firaCode(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: Colors.grey,
+      ),
+    );
+
     _darkTheme = dark.copyWith(
       scaffoldBackgroundColor: PortfolioColors.dark.scaffoldBackgroundColor,
       disabledColor: PortfolioColors.dark.grey,
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: AppConstraints.medium,
             vertical: AppConstraints.small,
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.zero),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.zero,
           ),
           side: BorderSide(width: 1, color: PortfolioColors.dark.primary),
           foregroundColor: PortfolioColors.dark.white,
@@ -138,6 +148,7 @@ class DefaultTheme {
         ),
       ),
       inputDecorationTheme: darkInputDecorationTheme,
+      listTileTheme: darkListTileTheme,
     );
   }
 

@@ -14,11 +14,11 @@ class DecorationRectangle extends StatelessWidget {
     this.onLeft = false,
     this.onRight = false,
   }) : assert(
-         shape == DecorationRectangleShape.square
-             ? dimension != null
-             : height != null && width != null,
-         'For square provide dimension; for rectangle provide height & width',
-       );
+          shape == DecorationRectangleShape.square
+              ? dimension != null
+              : height != null && width != null,
+          'For square provide dimension; for rectangle provide height & width',
+        );
 
   final DecorationRectangleShape shape;
   final double? dimension;

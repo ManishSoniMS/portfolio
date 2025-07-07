@@ -20,7 +20,7 @@ class ViewLessProjects extends StatelessWidget {
           left: -(84 * 0.67),
           child: SvgPicture.asset(Assets.icons.dots, height: 84, width: 84),
         ),
-        Positioned(
+        const Positioned(
           top: 0,
           bottom: 0,
           right: -(155 * 0.67),
@@ -44,17 +44,16 @@ class ViewLessProjects extends StatelessWidget {
 
             final tileWidth =
                 ((constraints.maxWidth - (horizontalPadding * 2)) / maxLength) -
-                AppConstraints.medium;
+                    AppConstraints.medium;
 
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-
               child: Wrap(
                 children: [
                   for (var i = 0; i < maxLength; i++) ...[
                     ProjectTile(projects[i], width: tileWidth),
                     if ((i + 1) != maxLength)
-                      SizedBox(width: AppConstraints.medium),
+                      const SizedBox(width: AppConstraints.medium),
                   ],
                 ],
               ),

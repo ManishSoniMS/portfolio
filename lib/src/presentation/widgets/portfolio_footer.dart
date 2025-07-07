@@ -4,7 +4,9 @@ import 'package:gap/gap.dart';
 
 import '../../../gen/assets.gen.dart';
 import '../../core/constants/app_constraints.dart';
+import '../../core/constants/links.dart';
 import '../../core/utils/extensions/on_build_context.dart';
+import '../../core/utils/functions/open_link.dart';
 import 'svg_icon_button.dart';
 import 'tile_divider.dart';
 
@@ -18,7 +20,7 @@ class PortfolioFooter extends StatelessWidget {
         bool isMobile = constraints.maxWidth <= AppConstraints.maxMobileWidth;
         return Column(
           children: [
-            TileDivider(),
+            const TileDivider(),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: AppConstraints.contentPadding(constraints.maxWidth),
@@ -40,11 +42,11 @@ class PortfolioFooter extends StatelessWidget {
                               height: 16,
                               width: 16,
                             ),
-                            Gap(AppConstraints.small),
+                            const Gap(AppConstraints.small),
                             Text("Manish", style: context.textTheme.bodyMedium),
                           ],
                         ),
-                        Gap(AppConstraints.medium),
+                        const Gap(AppConstraints.medium),
                         Text(
                           "Cross-platform Mobile Application Developer",
                           style: context.textTheme.bodySmall,
@@ -54,28 +56,32 @@ class PortfolioFooter extends StatelessWidget {
                   ),
                   Expanded(
                     flex: isMobile ? 3 : 2,
-
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text("Media", style: context.textTheme.titleLarge),
-                        Gap(AppConstraints.small * 1.5),
+                        const Gap(AppConstraints.small * 1.5),
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             SvgIconButton(
-                              onTap: () {},
+                              onTap: () => openLink(linkedin),
                               icon: Assets.icons.linkedin,
                             ),
-                            Gap(AppConstraints.medium),
+                            const Gap(AppConstraints.medium),
                             SvgIconButton(
-                              onTap: () {},
+                              onTap: () => openLink(github),
                               icon: Assets.icons.github,
                             ),
-                            Gap(AppConstraints.medium),
+                            const Gap(AppConstraints.medium),
                             SvgIconButton(
-                              onTap: () {},
+                              onTap: () => openLink(instagram),
                               icon: Assets.icons.instagram,
+                            ),
+                            const Gap(AppConstraints.medium),
+                            SvgIconButton(
+                              onTap: () => openLink(youtube),
+                              icon: Assets.icons.youtube,
                             ),
                           ],
                         ),
@@ -85,7 +91,7 @@ class PortfolioFooter extends StatelessWidget {
                 ],
               ),
             ),
-            Gap(53),
+            const Gap(53),
           ],
         );
       },

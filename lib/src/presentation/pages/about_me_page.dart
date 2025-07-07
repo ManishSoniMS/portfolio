@@ -12,15 +12,44 @@ import '../widgets/header_button.dart';
 import '../widgets/portfolio_footer.dart';
 import '../widgets/skills.dart';
 
-List facts = [
-  'I like winter more than summer',
-  'I often bike with my friends',
-  'I like pizza and pasta',
-  'I was in Egypt, Poland and Turkey',
-  'My favorite movie is The Green Mile',
-  'I am still in school',
-  'I don’t have any siblings',
+String get calculatedExperience {
+  final startedDate = DateTime(2021, 7, 1);
+  final today = DateTime.now();
+
+  final experienceInMonth = today.difference(startedDate).inDays ~/ 30;
+
+  final experienceInYears = experienceInMonth / 12;
+
+  final experience = experienceInYears.toStringAsFixed(1);
+  return experience;
+}
+
+List<String> facts = [
+  'Flutter dev with $calculatedExperience+ years of hands-on experience.',
+  'I build fast, clean, cross-platform apps.',
+  'Love working with BLoC, Provider, and clean code.',
+  'Real-time updates? Firebase is my go-to.',
+  'Payments? Done it with Stripe and Razorpay.',
+  'CI/CD? Bitrise keeps my builds smooth.',
+  'I’m also an artist—portraits are my thing.',
+  'I run two art pages full of sketches and studies.',
+  'Art helps me slow down. Code keeps me sharp.',
+  'I create stuff that looks good and works better.',
 ];
+
+String aboutMeText = "Hey! I’m Manish —\n\n"
+    "A passionate Flutter developer with $calculatedExperience+ "
+    "years of experience building high-performance, visually polished apps for "
+    "mobile and web. I specialize in turning complex ideas "
+    "into smooth, scalable solutions using Flutter, Firebase, "
+    "and REST APIs. From crafting pixel-perfect UIs to "
+    "automating workflows with CI/CD, I bring precision, "
+    "creativity, and a user-first mindset to every project.\n\n"
+    "When I’m not coding, I’m exploring the latest in the "
+    "Flutter ecosystem or geeking out over performance "
+    "optimization. \n\n"
+    "Tech is my craft, creativity is my fuel — and I "
+    "love building experiences that make both shine.";
 
 class AboutMePage extends StatelessWidget {
   const AboutMePage({super.key});
@@ -61,7 +90,6 @@ class AboutMePage extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
-
                     Positioned(
                       bottom: -103 / 3,
                       right: -30,
@@ -74,7 +102,7 @@ class AboutMePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Positioned(
+                    const Positioned(
                       top: 50,
                       right: -155 / 2,
                       child: Center(
@@ -84,7 +112,7 @@ class AboutMePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Positioned(
+                    const Positioned(
                       bottom: 100,
                       left: -155 / 2,
                       child: Center(
@@ -100,7 +128,6 @@ class AboutMePage extends StatelessWidget {
                           constraints.maxWidth,
                         ),
                       ),
-
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -113,29 +140,30 @@ class AboutMePage extends StatelessWidget {
                                 textStyle: context.textTheme.headlineMedium,
                                 hasDivider: false,
                               ),
-                              Gap(AppConstraints.medium),
+                              const Gap(AppConstraints.medium),
                               Text(
                                 "Who am i?",
                                 style: context.textTheme.bodySmall,
                               ),
                             ],
                           ),
-                          Gap(AppConstraints.medium),
+                          const Gap(AppConstraints.medium),
                           _aboutMeSection(context, isMobile: isMobile),
-                          Gap(AppConstraints.extraLarge * 2),
+                          const Gap(AppConstraints.extraLarge * 2),
                           HeaderButton(
                             text: "skills",
                             icon: "/",
                             textStyle: context.textTheme.headlineMedium,
                             hasDivider: false,
                           ),
-                          Gap(AppConstraints.medium),
+                          const Gap(AppConstraints.medium),
                           Wrap(
                             alignment: WrapAlignment.end,
                             children: [
                               for (var i = 0; i < skills.length; i++)
                                 Padding(
-                                  padding: EdgeInsets.all(AppConstraints.small),
+                                  padding: const EdgeInsets.all(
+                                      AppConstraints.small),
                                   child: SkillBox(
                                     title: skills[i].title,
                                     skills: skills[i].skills,
@@ -144,23 +172,22 @@ class AboutMePage extends StatelessWidget {
                                 ),
                             ],
                           ),
-                          Gap(AppConstraints.extraLarge * 2),
+                          const Gap(AppConstraints.extraLarge * 2),
                           HeaderButton(
                             text: "my-fun-facts",
                             icon: "/",
                             textStyle: context.textTheme.headlineMedium,
                             hasDivider: false,
                           ),
-                          Gap(AppConstraints.medium),
+                          const Gap(AppConstraints.medium),
                           _myFunFacts(context, isMobile: isMobile),
                         ],
                       ),
                     ),
                   ],
                 ),
-
-                Gap(AppConstraints.extraLarge * 4),
-                PortfolioFooter(),
+                const Gap(AppConstraints.extraLarge * 4),
+                const PortfolioFooter(),
               ],
             );
           },
@@ -176,8 +203,8 @@ class AboutMePage extends StatelessWidget {
         children: [
           for (var i = 0; i < facts.length; i++)
             Container(
-              margin: EdgeInsets.all(AppConstraints.small),
-              padding: EdgeInsets.all(AppConstraints.small),
+              margin: const EdgeInsets.all(AppConstraints.small),
+              padding: const EdgeInsets.all(AppConstraints.small),
               decoration: BoxDecoration(
                 border: Border.all(
                   color: context.theme.disabledColor,
@@ -203,8 +230,8 @@ class AboutMePage extends StatelessWidget {
             children: [
               for (var i = 0; i < facts.length; i++)
                 Container(
-                  margin: EdgeInsets.all(AppConstraints.small),
-                  padding: EdgeInsets.all(AppConstraints.small),
+                  margin: const EdgeInsets.all(AppConstraints.small),
+                  padding: const EdgeInsets.all(AppConstraints.small),
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: context.theme.disabledColor,
@@ -224,7 +251,7 @@ class AboutMePage extends StatelessWidget {
         Expanded(
           child: Stack(
             children: [
-              Center(child: SizedBox.square(dimension: 200)),
+              const Center(child: SizedBox.square(dimension: 200)),
               Positioned(
                 top: 0,
                 left: 0,
@@ -280,26 +307,13 @@ class AboutMePage extends StatelessWidget {
         ? Column(
             children: [
               Text(
-                "Hey! I’m Manish —\n\n"
-                "A passionate Flutter developer with 3.5+ years of experience "
-                "building high-performance, visually polished apps for "
-                "mobile and web. I specialize in turning complex ideas "
-                "into smooth, scalable solutions using Flutter, Firebase, "
-                "and REST APIs. From crafting pixel-perfect UIs to "
-                "automating workflows with CI/CD, I bring precision, "
-                "creativity, and a user-first mindset to every project.\n\n"
-                "When I’m not coding, I’m exploring the latest in the "
-                "Flutter ecosystem or geeking out over performance "
-                "optimization. \n"
-                "Tech is my craft, creativity is my fuel — and I "
-                "love building experiences that make both shine.",
-
+                aboutMeText,
                 style: context.textTheme.bodySmall?.copyWith(
                   color: context.theme.disabledColor,
                 ),
               ),
-              Gap(AppConstraints.extraLarge),
-              AboutMeImage(),
+              const Gap(AppConstraints.extraLarge),
+              const AboutMeImage(),
             ],
           )
         : Row(
@@ -307,26 +321,14 @@ class AboutMePage extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  "Hey! I’m Manish —\n\n"
-                  "A passionate Flutter developer with 3.5+ years of experience "
-                  "building high-performance, visually polished apps for "
-                  "mobile and web. I specialize in turning complex ideas "
-                  "into smooth, scalable solutions using Flutter, Firebase, "
-                  "and REST APIs. From crafting pixel-perfect UIs to "
-                  "automating workflows with CI/CD, I bring precision, "
-                  "creativity, and a user-first mindset to every project.\n\n"
-                  "When I’m not coding, I’m exploring the latest in the "
-                  "Flutter ecosystem or geeking out over performance "
-                  "optimization. \n\n"
-                  "Tech is my craft, creativity is my fuel — and I "
-                  "love building experiences that make both shine.",
+                  aboutMeText,
                   style: context.textTheme.bodySmall?.copyWith(
                     color: context.theme.disabledColor,
                   ),
                 ),
               ),
-              Gap(AppConstraints.extraLarge),
-              AboutMeImage(),
+              const Gap(AppConstraints.extraLarge),
+              const AboutMeImage(),
             ],
           );
   }

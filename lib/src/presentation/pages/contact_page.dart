@@ -37,7 +37,7 @@ class ContactsPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Positioned(
+                    const Positioned(
                       top: 0,
                       bottom: 0,
                       right: -155 / 2,
@@ -48,14 +48,12 @@ class ContactsPage extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: AppConstraints.contentPadding(
                           constraints.maxWidth,
                         ),
                       ),
-
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -68,25 +66,23 @@ class ContactsPage extends StatelessWidget {
                                 textStyle: context.textTheme.headlineMedium,
                                 hasDivider: false,
                               ),
-                              Gap(AppConstraints.medium),
+                              const Gap(AppConstraints.medium),
                               Text(
                                 "Why contact me?",
                                 style: context.textTheme.bodySmall,
                               ),
                             ],
                           ),
-                          Gap(AppConstraints.medium),
+                          const Gap(AppConstraints.medium),
                           _aboutMeSection(context, isMobile: isMobile),
-
-                          Gap(AppConstraints.medium),
+                          const Gap(AppConstraints.medium),
                         ],
                       ),
                     ),
                   ],
                 ),
-
-                Gap(AppConstraints.extraLarge * 4),
-                PortfolioFooter(),
+                const Gap(AppConstraints.extraLarge * 4),
+                const PortfolioFooter(),
               ],
             );
           },
@@ -103,13 +99,12 @@ class ContactsPage extends StatelessWidget {
                 "I’m interested in freelance opportunities. "
                 "However, if you have other request or question, "
                 "don’t hesitate to contact me.",
-
                 style: context.textTheme.bodySmall?.copyWith(
                   color: context.theme.disabledColor,
                 ),
               ),
-              Gap(AppConstraints.extraLarge),
-              ContactMeForm(),
+              const Gap(AppConstraints.extraLarge),
+              const ContactMeForm(),
             ],
           )
         : Row(
@@ -126,8 +121,8 @@ class ContactsPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Gap(AppConstraints.extraLarge),
-              Expanded(flex: 3, child: ContactMeForm()),
+              const Gap(AppConstraints.extraLarge),
+              const Expanded(flex: 3, child: ContactMeForm()),
             ],
           );
   }
@@ -150,26 +145,28 @@ class _ContactMeFormState extends State<ContactMeForm> {
             children: [
               Expanded(
                 child: TextFormField(
-                  decoration: InputDecoration(labelText: "Name"),
+                  decoration: const InputDecoration(labelText: "Name"),
                 ),
               ),
-              Gap(AppConstraints.medium),
+              const Gap(AppConstraints.medium),
               Expanded(
                 child: TextFormField(
-                  decoration: InputDecoration(labelText: "Email"),
+                  decoration: const InputDecoration(labelText: "Email"),
                 ),
               ),
             ],
           ),
-          Gap(AppConstraints.medium),
-          TextFormField(decoration: InputDecoration(labelText: "Title")),
-          Gap(AppConstraints.medium),
-          TextFormField(decoration: InputDecoration(labelText: "Message")),
-          Gap(AppConstraints.medium),
-
+          const Gap(AppConstraints.medium),
+          TextFormField(decoration: const InputDecoration(labelText: "Title")),
+          const Gap(AppConstraints.medium),
+          TextFormField(
+            maxLines: 5,
+            decoration: const InputDecoration(labelText: "Message"),
+          ),
+          const Gap(AppConstraints.medium),
           SizedBox(
             width: double.infinity,
-            child: OutlinedButton(onPressed: () {}, child: Text("Send")),
+            child: OutlinedButton(onPressed: () {}, child: const Text("Send")),
           ),
         ],
       ),

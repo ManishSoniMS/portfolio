@@ -35,7 +35,7 @@ class Skills extends StatelessWidget {
                       textStyle: context.textTheme.headlineMedium,
                       hasDivider: true,
                     ),
-                    Gap(AppConstraints.extraLarge),
+                    const Gap(AppConstraints.extraLarge),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -47,13 +47,13 @@ class Skills extends StatelessWidget {
                               skills: skills[0].skills,
                               width: tileWidth,
                             ),
-                            Gap(AppConstraints.medium),
+                            const Gap(AppConstraints.medium),
                             SkillBox(
                               title: skills[2].title,
                               skills: skills[2].skills,
                               width: tileWidth,
                             ),
-                            Gap(AppConstraints.medium),
+                            const Gap(AppConstraints.medium),
                             SkillBox(
                               title: skills[4].title,
                               skills: skills[4].skills,
@@ -61,7 +61,7 @@ class Skills extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Gap(AppConstraints.medium),
+                        const Gap(AppConstraints.medium),
                         Column(
                           children: [
                             SkillBox(
@@ -69,13 +69,13 @@ class Skills extends StatelessWidget {
                               skills: skills[1].skills,
                               width: tileWidth,
                             ),
-                            Gap(AppConstraints.medium),
+                            const Gap(AppConstraints.medium),
                             SkillBox(
                               title: skills[3].title,
                               skills: skills[3].skills,
                               width: tileWidth,
                             ),
-                            Gap(AppConstraints.medium),
+                            const Gap(AppConstraints.medium),
                             SkillBox(
                               title: skills[5].title,
                               skills: skills[5].skills,
@@ -98,13 +98,13 @@ class Skills extends StatelessWidget {
                             textStyle: context.textTheme.headlineMedium,
                             hasDivider: true,
                           ),
-                          if (!isLargeMobile) SkillsGraphic(),
+                          if (!isLargeMobile) const SkillsGraphic(),
                         ],
                       ),
                     ),
-                    Gap(AppConstraints.extraLarge),
+                    const Gap(AppConstraints.extraLarge),
                     Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         top: AppConstraints.extraLarge * 2,
                       ),
                       child: Row(
@@ -115,7 +115,7 @@ class Skills extends StatelessWidget {
                             skills: skills[0].skills,
                             width: tileWidth,
                           ),
-                          Gap(AppConstraints.medium),
+                          const Gap(AppConstraints.medium),
                           Column(
                             children: [
                               SkillBox(
@@ -123,7 +123,7 @@ class Skills extends StatelessWidget {
                                 skills: skills[1].skills,
                                 width: tileWidth,
                               ),
-                              Gap(AppConstraints.medium),
+                              const Gap(AppConstraints.medium),
                               SkillBox(
                                 title: skills[2].title,
                                 skills: skills[2].skills,
@@ -131,7 +131,7 @@ class Skills extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Gap(AppConstraints.medium),
+                          const Gap(AppConstraints.medium),
                           Column(
                             children: [
                               SkillBox(
@@ -139,13 +139,13 @@ class Skills extends StatelessWidget {
                                 skills: skills[3].skills,
                                 width: tileWidth,
                               ),
-                              Gap(AppConstraints.medium),
+                              const Gap(AppConstraints.medium),
                               SkillBox(
                                 title: skills[4].title,
                                 skills: skills[4].skills,
                                 width: tileWidth,
                               ),
-                              Gap(AppConstraints.medium),
+                              const Gap(AppConstraints.medium),
                               SkillBox(
                                 title: skills[5].title,
                                 skills: skills[5].skills,
@@ -202,7 +202,7 @@ class SkillsGraphic extends StatelessWidget {
             width: 169,
           ),
         ),
-        Positioned(
+        const Positioned(
           right: 50,
           top: 0,
           child: DecorationRectangle(
@@ -210,7 +210,7 @@ class SkillsGraphic extends StatelessWidget {
             dimension: 129,
           ),
         ),
-        Positioned(
+        const Positioned(
           right: 0,
           bottom: 60,
           child: DecorationRectangle(
@@ -218,13 +218,13 @@ class SkillsGraphic extends StatelessWidget {
             dimension: 78,
           ),
         ),
-        SizedBox(width: 453, height: 423),
+        const SizedBox(width: 453, height: 423),
       ],
     );
   }
 }
 
-class SkillBox extends StatelessWidget {
+class SkillBox extends StatefulWidget {
   const SkillBox({
     super.key,
     required this.title,
@@ -237,30 +237,45 @@ class SkillBox extends StatelessWidget {
   final double width;
 
   @override
+  State<SkillBox> createState() => _SkillBoxState();
+}
+
+class _SkillBoxState extends State<SkillBox> {
+  bool hasHover = false;
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      decoration: BoxDecoration(
-        border: Border.all(color: context.theme.disabledColor, width: 1),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.all(AppConstraints.small),
-            child: Text(title, style: context.textTheme.bodyLarge),
-          ),
-          TileDivider(),
-          Padding(
-            padding: EdgeInsets.all(AppConstraints.small),
-            child: Text(
-              listToString(skills),
-              style: context.textTheme.bodySmall?.copyWith(
-                color: context.theme.disabledColor,
+    return FocusableActionDetector(
+      onShowHoverHighlight: (hover) {
+        setState(() => hasHover = hover);
+      },
+      child: Container(
+        width: widget.width,
+        decoration: BoxDecoration(
+          border: Border.all(
+              color: hasHover
+                  ? context.colors.primary
+                  : context.theme.disabledColor,
+              width: 1),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(AppConstraints.small),
+              child: Text(widget.title, style: context.textTheme.bodyLarge),
+            ),
+            TileDivider(color: hasHover ? context.colors.primary : null),
+            Padding(
+              padding: const EdgeInsets.all(AppConstraints.small),
+              child: Text(
+                listToString(widget.skills),
+                style: context.textTheme.bodySmall?.copyWith(
+                  color: context.theme.disabledColor,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

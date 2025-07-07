@@ -43,8 +43,9 @@ class UserImage extends StatelessWidget {
           ),
         ),
         Container(
-          constraints: BoxConstraints(maxWidth: AppConstraints.maxMobileWidth),
-          padding: EdgeInsets.symmetric(
+          constraints:
+              const BoxConstraints(maxWidth: AppConstraints.maxMobileWidth),
+          padding: const EdgeInsets.symmetric(
             horizontal: AppConstraints.small,
             vertical: AppConstraints.small / 2,
           ),
@@ -59,7 +60,7 @@ class UserImage extends StatelessWidget {
                 width: AppConstraints.medium,
                 color: context.colors.primary,
               ),
-              Gap(AppConstraints.small),
+              const Gap(AppConstraints.small),
               Flexible(
                 child: RichText(
                   text: TextSpan(
