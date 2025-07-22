@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import '../../../gen/assets.gen.dart';
 import '../../core/constants/app_constraints.dart';
 import '../../core/utils/extensions/on_build_context.dart';
+import '../../data/analytics/analytics.dart';
 import '../widgets/decoration_rectangle.dart';
 import '../widgets/header_button.dart';
 import '../widgets/portfolio_footer.dart';
@@ -136,6 +137,61 @@ class ContactMeForm extends StatefulWidget {
 }
 
 class _ContactMeFormState extends State<ContactMeForm> {
+  late final TextEditingController nameController,
+      emailController,
+      titleController,
+      messageController;
+
+  late final FocusNode nameFocusNode,
+      emailFocusNode,
+      titleFocusNode,
+      messageFocusNode;
+
+  @override
+  void initState() {
+    nameController = TextEditingController();
+    emailController = TextEditingController();
+    titleController = TextEditingController();
+    messageController = TextEditingController();
+    nameFocusNode = FocusNode();
+    emailFocusNode = FocusNode();
+    titleFocusNode = FocusNode();
+    messageFocusNode = FocusNode();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    titleController.dispose();
+    messageController.dispose();
+    nameFocusNode.dispose();
+    emailFocusNode.dispose();
+    titleFocusNode.dispose();
+    messageFocusNode.dispose();
+    super.dispose();
+  }
+
+  void onSubmit(BuildContext context) {
+    Analytics.instance.logGenerateLeadEvent(
+      name: nameController.text,
+      email: emailController.text,
+      title: titleController.text,
+      message: messageController.text,
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text("Thank you, Your query has been registered!"),
+        action: SnackBarAction(
+          label: 'Close',
+          onPressed: () => ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -145,31 +201,53 @@ class _ContactMeFormState extends State<ContactMeForm> {
             children: [
               Expanded(
                 child: TextFormField(
-                  decoration: const InputDecoration(labelText: "Name"),
+                  controller: nameController,
+                  focusNode: nameFocusNode,
+                  decoration: const InputDecoration(
+                    labelText: "Name",
+                  ),
+                  onFieldSubmitted: (_) => emailFocusNode.requestFocus(),
                 ),
               ),
               const Gap(AppConstraints.medium),
               Expanded(
                 child: TextFormField(
+                  controller: emailController,
+                  focusNode: emailFocusNode,
                   decoration: const InputDecoration(labelText: "Email"),
+                  onFieldSubmitted: (_) => titleFocusNode.requestFocus(),
                 ),
               ),
             ],
           ),
           const Gap(AppConstraints.medium),
-          TextFormField(decoration: const InputDecoration(labelText: "Title")),
+          TextFormField(
+            controller: titleController,
+            focusNode: titleFocusNode,
+            decoration: const InputDecoration(labelText: "Title"),
+            onFieldSubmitted: (_) => messageFocusNode.requestFocus(),
+          ),
           const Gap(AppConstraints.medium),
           TextFormField(
             maxLines: 5,
+            controller: messageController,
+            focusNode: messageFocusNode,
             decoration: const InputDecoration(labelText: "Message"),
+            onFieldSubmitted: (_) {
+              FocusScope.of(context).unfocus();
+              onSubmit(context);
+            },
           ),
           const Gap(AppConstraints.medium),
           SizedBox(
             width: double.infinity,
-            child: OutlinedButton(onPressed: () {}, child: const Text("Send")),
+            child: OutlinedButton(
+                onPressed: () => onSubmit(context), child: const Text("Send")),
           ),
         ],
       ),
     );
   }
 }
+
+/// app >> mode on right hand side >> benefit >> limit increase // 24-48 hr

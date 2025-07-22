@@ -35,6 +35,7 @@ List<String> facts = [
   'I run two art pages full of sketches and studies.',
   'Art helps me slow down. Code keeps me sharp.',
   'I create stuff that looks good and works better.',
+  'Currently i am learning React-native.',
 ];
 
 String aboutMeText = "Hey! I’m Manish —\n\n"

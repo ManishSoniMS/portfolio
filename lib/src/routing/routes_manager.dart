@@ -1,5 +1,10 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../data/analytics/analytics.dart';
 import '../presentation/pages/about_me_page.dart';
 import '../presentation/pages/contact_page.dart';
 import '../presentation/pages/home_page.dart';
@@ -10,6 +15,7 @@ import '../presentation/widgets/portfolio_navigation_shell.dart';
 class RoutesManager {
   RoutesManager._() {
     router = GoRouter(
+      observers: kDebugMode ? [] : [Analytics.instance.observer],
       routes: [
         GoRoute(
           path: '/',

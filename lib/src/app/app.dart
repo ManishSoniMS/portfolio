@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../core/theme/theme.dart';
+import '../data/analytics/analytics.dart';
 import '../routing/routes_manager.dart';
 
 class App extends StatelessWidget {
