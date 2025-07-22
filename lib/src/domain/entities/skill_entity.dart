@@ -33,7 +33,15 @@ class SkillsEntity extends Equatable {
 const List<SkillsEntity> skills = <SkillsEntity>[
   SkillsEntity(
     title: "Language & Framework",
-    skills: ["Dart", "Flutter", "TypeScript"],
+    skills: [
+      "Dart",
+      "Flutter",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "TypeScript",
+      "React-Native"
+    ],
   ),
   SkillsEntity(
     title: "Architecture & Patterns",
@@ -44,6 +52,8 @@ const List<SkillsEntity> skills = <SkillsEntity>[
       "Provider",
       "MVVM",
       "Freezed",
+      "Context API",
+      "Zustand"
     ],
   ),
   SkillsEntity(
