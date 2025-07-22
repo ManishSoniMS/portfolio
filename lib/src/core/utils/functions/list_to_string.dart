@@ -1,15 +1,10 @@
 String listToString(List<String> list) {
-  String val = '';
-  List<String> list0 = [...list];
-  if (list.length > 2) {
-    String lastTech = list0[list0.length - 1];
-    list0.remove(lastTech);
+  if (list.isEmpty) return '';
 
-    val = list0.join(', ');
-    val = '$val, and $lastTech';
-  } else {
-    val = list0.join(', ');
-  }
+  if (list.length == 1) return list[0];
+  if (list.length == 2) return '${list[0]} and ${list[1]}';
 
-  return val;
+  final last = list.last;
+  final initial = list.sublist(0, list.length - 1).join(', ');
+  return '$initial, and $last';
 }
